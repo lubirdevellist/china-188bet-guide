@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>了解 188bet – 信息卡片介绍页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(145deg, #fde9d0 0%, #f8d5b0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 1.8rem 1rem 3rem;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 主视觉卡片 */
+        .hero-card {
+            background: #ffffff;
+            border-radius: 48px 48px 32px 32px;
+            padding: 2.5rem 2rem 2.2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 30px -10px rgba(160, 100, 40, 0.20);
+            text-align: center;
+            transition: box-shadow 0.2s;
+        }
+
+        .hero-card h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: #573f2c;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-card h1 span {
+            background: linear-gradient(135deg, #b47b4f, #8f5e38);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            color: #7a6249;
+            margin: 0.5rem 0 0.8rem;
+            font-weight: 350;
+            line-height: 1.5;
+        }
+
+        .hero-visual {
+            margin-top: 1.2rem;
+            background: #fcf2e6;
+            padding: 1rem 1.6rem;
+            border-radius: 100px;
+            display: inline-block;
+            color: #5b422f;
+            font-size: 0.95rem;
+            border: 1px solid #ebd6c0;
+        }
+
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 1.8rem 1.5rem 1.8rem;
+            box-shadow: 0 12px 18px -8px rgba(110, 70, 30, 0.12);
+            transition: transform 0.15s ease, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 28px -12px rgba(130, 80, 40, 0.15);
+        }
+
+        .info-card .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.2rem;
+            display: block;
+            line-height: 1;
+        }
+
+        .info-card h2 {
+            font-size: 1.35rem;
+            color: #4a3728;
+            font-weight: 600;
+            margin-top: 0.25rem;
+            margin-bottom: 0.6rem;
+            border-bottom: 2px solid #f0ddd0;
+            padding-bottom: 0.3rem;
+            display: inline-block;
+        }
+
+        .info-card p, .info-card li {
+            font-size: 0.98rem;
+            color: #3f3226;
+            line-height: 1.6;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.4rem 0 0;
+        }
+
+        .info-card ul li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-card ul li::before {
+            content: "·";
+            position: absolute;
+            left: 0.1rem;
+            color: #b88a63;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* 自然链接段落卡片 */
+        .link-paragraph-card {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 18px -8px rgba(110, 70, 30, 0.10);
+            line-height: 1.7;
+        }
+
+        .link-paragraph-card p {
+            color: #3d3126;
+            font-size: 1.02rem;
+            margin: 0.8rem 0;
+        }
+
+        .link-paragraph-card .link-highlight {
+            font-weight: 500;
+            color: #754e2d;
+            text-decoration: none;
+            border-bottom: 2px solid #e2cbb8;
+            transition: border-color 0.2s, background 0.1s;
+            padding: 0 0.1rem;
+        }
+
+        .link-paragraph-card .link-highlight:hover {
+            border-bottom-color: #b47b4f;
+            background: #f6ede4;
+        }
+
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 12px 18px -8px rgba(110, 70, 30, 0.10);
+            margin-bottom: 2rem;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.2rem;
+            color: #4e3826;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-item {
+            margin: 0.8rem 0;
+        }
+
+        .faq-item strong {
+            display: block;
+            color: #6f4f34;
+            font-weight: 550;
+            margin-bottom: 0.15rem;
+        }
+
+        .faq-item p {
+            color: #3d3126;
+            font-size: 0.96rem;
+            line-height: 1.5;
+        }
+
+        hr {
+            margin: 1.2rem 0 0.8rem;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #dcc4b2, transparent);
+        }
+
+        .footnote {
+            text-align: center;
+            color: #735d49;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 550px) {
+            body { padding: 1rem 0.8rem 2rem; }
+            .hero-card { padding: 1.8rem 1rem; }
+            .hero-card h1 { font-size: 2rem; }
+            .card-grid { gap: 1.2rem; }
+            .info-card { padding: 1.5rem 1.2rem; }
+            .link-paragraph-card { padding: 1.5rem 1.2rem; }
+            .faq-mini { padding: 1.5rem 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <h1>关于 <span>188bet</span></h1>
+        <div class="hero-tagline">一处融合多元线上娱乐体验的平台，<br>聚焦便捷与信息透明。</div>
+        <div class="hero-visual">🎯 快速识别 · 清晰分类 · 一站了解</div>
+    </div>
+
+    <!-- 信息卡片网格：用途 + 适合人群 -->
+    <div class="card-grid">
+        <div class="info-card">
+            <span class="card-icon">🧭</span>
+            <h2>平台用途一览</h2>
+            <p>许多用户希望快速了解一个网站主要提供哪些服务。<br><br>
+            <strong>188bet</strong> 聚合了体育赛事投注、真人视讯、电子游艺以及彩票等多种线上娱乐模块。界面以分类导航为主，方便用户按兴趣查找对应内容，无需在复杂菜单中反复跳转。</p>
+        </div>
+
+        <div class="info-card">
+            <span class="card-icon">👥</span>
+            <h2>适合哪些人群</h2>
+            <ul>
+                <li>对体育赛事感兴趣，希望参与竞猜互动的爱好者</li>
+                <li>喜欢真人荷官直播氛围，追求临场感的娱乐用户</li>
+                <li>偏好电子游艺、老虎机等快节奏休闲的玩家</li>
+                <li>希望在一个平台上体验多种不同娱乐形式的探索者</li>
+            </ul>
+            <p style="margin-top: 0.6rem;">平台提供多语言及多种支付方式，降低使用门槛。</p>
+        </div>
+
+        <div class="info-card">
+            <span class="card-icon">⚙️</span>
+            <h2>特点与提示</h2>
+            <p>✔ 页面分类清晰，体育、真人、电子、彩票等一目了然。<br>
+            ✔ 支持电脑与移动端浏览器直接使用，无需额外下载。<br>
+            ✔ 新用户可先浏览各版块规则，再选择自己感兴趣的方向。<br>
+            ⚠ 任何线上娱乐都建议理性参与，设置个人时间与预算。</p>
+        </div>
+    </div>
+
+    <!-- 自然链接段落卡片（嵌入严格可见文本） -->
+    <div class="link-paragraph-card">
+        <p>如果你正在寻找一个能够集中体验多种线上娱乐方式的平台，不妨直接访问 <a href="https://china-188bet.com" class="link-highlight">188bet</a> 查看其首页导航与分类模块。页面布局注重效率，各入口均配有简要说明，帮助新访客快速定位自己感兴趣的区域。</p>
+        <p>从体育赛事到真人视讯，从电子游戏到彩票板块，<a href="https://china-188bet.com" class="link-highlight">188bet</a> 试图通过清晰的栏目划分降低初次使用者的认知负担。当然，每个人的偏好不同，建议花几分钟浏览各分区描述，再决定从何处开始。</p>
+        <p style="margin-top: 0.2rem; font-size: 0.95rem; color: #5f4c3a;">👆 以上为基于页面结构的客观介绍，不构成任何推荐或保证。</p>
+    </div>
+
+    <!-- FAQ 摘要卡片 -->
+    <div class="faq-mini">
+        <h3>❓ 常见疑问摘要</h3>
+        <div class="faq-item">
+            <strong>188bet 主要提供什么？</strong>
+            <p>涵盖体育博彩、真人荷官、电子游艺、彩票等线上娱乐内容，属于综合型平台。</p>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要注册才能浏览？</strong>
+            <p>一般情况下，访问首页及查看各分类介绍无需登录，但参与具体项目需注册账户并遵守平台规则。</p>
+        </div>
+        <div class="faq-item">
+            <strong>有哪些设备可以访问？</strong>
+            <p>网站针对主流浏览器进行适配，手机、平板、电脑均可直接通过浏览器打开使用。</p>
+        </div>
+        <hr>
+        <p style="font-size: 0.92rem; color: #5b4736;">💡 更多细节请直接访问 <a href="https://china-188bet.com" class="link-highlight" style="border-bottom-width: 1px;">188bet</a> 仔细阅读对应页面的条款与规则。</p>
+    </div>
+
+    <div class="footnote">
+        — 信息卡片 · 温和指引 —
+    </div>
+</div>
+</body>
+</html>
