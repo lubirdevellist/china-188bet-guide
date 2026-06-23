@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>MK体育 · 专题介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', Georgia, serif;
+            background: #f7f4ef;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+
+        /* 深色头图 — 杂志宽幅 */
+        .magazine-hero {
+            background: #1a1e24;
+            background-image: radial-gradient(circle at 30% 40%, #2e3a45 0%, #12161b 90%);
+            min-height: 66vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            border-bottom: 4px solid #b79b6b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magazine-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg, rgba(255,255,245,0.02) 0px, rgba(255,255,245,0.02) 2px, transparent 2px, transparent 6px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+            color: #e9e3d5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4.2rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            word-break: keep-all;
+        }
+
+        .hero-content .subhead {
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            color: #c7b999;
+            border-top: 1px solid #786e56;
+            border-bottom: 1px solid #786e56;
+            display: inline-block;
+            padding: 0.6rem 2rem;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        .hero-content .decor-line {
+            width: 60px;
+            height: 2px;
+            background: #b79b6b;
+            margin: 1.8rem auto 0;
+        }
+
+        /* 浅色正文区 — 三段自然介绍 + 更多 */
+        .article-body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 3rem;
+            background: #faf8f4;
+        }
+
+        .article-body section {
+            margin-bottom: 3rem;
+        }
+
+        .article-body section:last-of-type {
+            margin-bottom: 1.8rem;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #2a2e35;
+            border-left: 5px solid #b79b6b;
+            padding-left: 1.2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .article-body p {
+            font-size: 1.08rem;
+            margin-bottom: 1.4rem;
+            text-align: justify;
+            text-justify: inter-ideograph;
+        }
+
+        .article-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #8b6d3f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: color 0.2s, background 0.2s;
+            padding: 0 2px;
+        }
+
+        .highlight-link:hover {
+            color: #4d391f;
+            background: #f0e4cf;
+            border-radius: 2px;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0 0.5rem;
+        }
+
+        .feature-item {
+            flex: 1 1 220px;
+            background: #ffffffef;
+            padding: 1.8rem 1.4rem;
+            border-radius: 2px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            border-top: 3px solid #c8b594;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #343a40;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.03em;
+        }
+
+        .feature-item p {
+            font-size: 0.98rem;
+            color: #4f4f4f;
+            margin-bottom: 0;
+        }
+
+        .faq-note {
+            background: #ece7de;
+            padding: 2rem 2.2rem;
+            border-radius: 3px;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .faq-note h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #2f353b;
+        }
+
+        .faq-note p {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .faq-note p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 页尾访问提示 — 杂志脚注感 */
+        .magazine-footer {
+            background: #1e2228;
+            color: #bab4a6;
+            text-align: center;
+            padding: 2.8rem 2rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            border-top: 3px solid #b79b6b;
+        }
+
+        .magazine-footer .footer-quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #d4c9b5;
+            margin-bottom: 1rem;
+        }
+
+        .magazine-footer a {
+            color: #dccdb6;
+            text-decoration: none;
+            border-bottom: 1px dotted #8f8066;
+            padding-bottom: 2px;
+            transition: color 0.2s;
+        }
+
+        .magazine-footer a:hover {
+            color: #f5ebd8;
+            border-bottom: 1px solid #f5ebd8;
+        }
+
+        .footer-sep {
+            display: inline-block;
+            margin: 0 12px;
+            color: #615b4e;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 680px) {
+            .magazine-hero {
+                min-height: 50vh;
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+                letter-spacing: 0.06em;
+            }
+
+            .hero-content .subhead {
+                font-size: 0.95rem;
+                padding: 0.4rem 1.2rem;
+            }
+
+            .article-body {
+                padding: 2.5rem 1.4rem 2rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+                padding-left: 0.8rem;
+            }
+
+            .feature-grid {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            .faq-note {
+                padding: 1.5rem 1.2rem;
+            }
+
+            .magazine-footer {
+                padding: 2rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 横幅 / 深色头图 -->
+<header class="magazine-hero">
+    <div class="hero-content">
+        <h1>MK体育</h1>
+        <div class="subhead">稳定 · 清晰 · 持续</div>
+        <div class="decor-line"></div>
+    </div>
+</header>
+
+<!-- 三段自然介绍 + 特点 + FAQ 摘要 -->
+<main class="article-body">
+
+    <!-- 第一段：入口与背景 -->
+    <section>
+        <h2 class="section-title">一处安静的起点</h2>
+        <p>
+            在信息繁多的体育世界里，一个稳定而简洁的入口往往比浮夸的门面更值得依赖。多年的运营积累让 <a href="https://portalcn-mk.com" class="highlight-link">MK体育</a> 成为许多人日常获取赛事信息、参与体育社区讨论的首选通道。它没有冗余的干扰，也不刻意追逐潮流，而是专注于提供一条清晰、可靠的通路——从你决定打开页面的那一刻起，就进入了一个以体育内容为核心的场域。
+        </p>
+        <p>
+            这种「安静」并非冷清，而是一种经过筛选后的专注。无论是赛程追踪、战术分析，还是社群里的观点碰撞，都建立在长期稳定的技术基础上。每一个细节都经过反复调校，让访问者不必为加载延迟或界面混乱分心，可以真正把注意力留给体育本身。
+        </p>
+    </section>
+
+    <!-- 第二段：平台特质与场景 -->
+    <section>
+        <h2 class="section-title">日常中的支点</h2>
+        <p>
+            对于经常出入各个体育平台的人来说，最令人安心的不是花哨的功能堆叠，而是无论何时都能顺利抵达的那个「老地方」。从清晨的比分速览，到深夜的深度讨论，<a href="https://portalcn-mk.com" class="highlight-link">MK体育</a> 始终保持着一致的响应节奏。没有突然改版的不适，没有广告泛滥的压迫——它像一座熟悉的图书馆，你知道哪一排书架放着你要找的杂志。
+        </p>
+        <p>
+            这种稳定性来源于对基础体验的坚持。页面结构清晰，导航直接，信息层级一目了然。即便在移动端，字体、间距和交互反馈也都经过细致考虑，不会因为屏幕变小而牺牲可读性。对于每天都需要看一眼体育动态的人来说，这是一种难得的「确定性」。
+        </p>
+    </section>
+
+    <!-- 第三段：结构、说明与 FAQ 摘要结合 -->
+    <section>
+        <h2 class="section-title">界面即说明</h2>
+        <p>
+            很多平台喜欢用冗长的引导页来告诉用户「怎么用」，但好的设计本身就在说话。<a href="https://portalcn-mk.com" class="highlight-link">MK体育</a> 的页面布局遵循一种朴素的逻辑：重要的内容放在显眼的位置，分类标签克制而明确，链接文本直白且不夸大。你不需要学习就能上手，因为每一个按钮、每一个栏目都遵循着体育爱好者熟悉的直觉。
+        </p>
+
+        <div class="faq-note">
+            <h4>常见疑问 · 摘要</h4>
+            <p><strong>关于稳定性：</strong> 多年来，平台始终维持着较低的资源占用和稳定的响应速度，即便在赛事密集时段也很少出现拥堵。技术架构持续迭代，但界面改动谨慎，避免打乱用户习惯。</p>
+            <p><strong>关于内容范围：</strong> 涵盖主流职业联赛、国际赛事以及部分小众运动项目，信息更新频率均衡，不盲目追热点，更注重深度和连续性。</p>
+            <p><strong>关于访问方式：</strong> 并无特殊的跳转或隐藏路径，直接通过标准域名即可进入。页面结构对外部搜索引擎友好，无需额外配置。</p>
+        </div>
+
+        <!-- 特点卡片（杂志风格） -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>清晰的信息层级</h3>
+                <p>从导航到正文，所有区块都按阅读习惯排列。配色以柔和中性色为主，减少视觉疲劳。</p>
+            </div>
+            <div class="feature-item">
+                <h3>克制的视觉语言</h3>
+                <p>不使用闪烁广告或弹窗，强调色仅用于链接和关键提示，保持页面庄重、安静。</p>
+            </div>
+            <div class="feature-item">
+                <h3>持续的背景支持</h3>
+                <p>长期维护与更新，不轻易改变用户熟悉的交互路径，后台服务保持全天候待命。</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- 页尾访问提示 — 杂志脚注感 -->
+<footer class="magazine-footer">
+    <div class="footer-quote">“体育是一种持续的对话，而入口应当保持敞开。”</div>
+    <div>
+        <a href="https://portalcn-mk.com">MK体育</a>
+        <span class="footer-sep">·</span>
+        <span>内容聚合 · 赛事信息 · 社区观察</span>
+        <span class="footer-sep">·</span>
+        <span>始于稳定，终于清晰</span>
+    </div>
+    <div style="margin-top: 1.2rem; font-size: 0.8rem; color: #7d7565;">
+        页面说明 · 非商业展示 · 信息仅供参考
+    </div>
+</footer>
+
+</body>
+</html>
